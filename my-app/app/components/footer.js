@@ -30,13 +30,14 @@ const Footer = () => {
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">FIND US</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://github.com/amaalioussama" class="hover:underline ">Github</a>
+                          <a href="" class="hover:underline">GitHub</a>
                       </li>
                       <li>
-                          <a href="" class="hover:underline">Discord</a>
+                          <a href="" class="hover:underline">Linkdin</a>
                       </li>
+                      <br />
                       <li>
-                          <a href="" class="hover:underline">Linkden</a>
+                          <a href="" class="hover:underline">Facebook</a>
                       </li>
                   </ul>
               </div>
