@@ -7,7 +7,7 @@ import Footer from '../components/footer';
 const Page = () => {
   return (
     <div>
-    <div className="bg-gradient-to-b from-rose-800 via-red-700 to-transparent h-screen relative">
+    <div className="bg-gradient-to-b from-red-950 to-transparent h-screen relative">
     
       <div className="absolute inset-0 bg-cover bg-center z-0">
         <Image src={backraound} layout="fill" objectFit="cover" alt="Background Image" />
@@ -43,7 +43,7 @@ const Page = () => {
               Forget password? <a href="#" className="font-medium text-white hover:underline">Click here</a>.
             </p>
           </div>
-          <button className="relative inline-flex w-48 items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-base font-medium text-white rounded-lg group bg-gradient-to-br from-rose-800 via-red-700">
+          <button className="relative inline-flex w-48 items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-base font-medium text-white rounded-lg group bg-gradient-to-br from-red-950 via-red-800">
             <span className="relative px-5 py-2.5 w-48  transition-all ease-in duration-75 bg-black rounded-md group-hover:bg-opacity-0">
               Login
             </span>
