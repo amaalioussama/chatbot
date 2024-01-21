@@ -14,6 +14,7 @@ module.exports = {
       },
       fontFamily: {
         'serif-gujarati': ['Noto Serif Gujarati', 'serif'],
+        'arimo-hebrew-subset': ['Arimo Hebrew Subset', 'sans-serif'],
       },
     },
   },
