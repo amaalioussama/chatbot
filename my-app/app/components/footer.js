@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import Logo from '../../public/logo.png';
-
 const Footer = () => {
- 
   return <div>
-  
+    
 
     <footer class="bg-gradient-to-t from-black via-black to-black">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">

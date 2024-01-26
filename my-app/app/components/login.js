@@ -1,22 +1,19 @@
-
 import Image from 'next/image';
 import backraound from '../../public/backforms.png';
 import Logo from '../../public/logo.png';
 
-
 const Login = () => {
-
   return <div>
      <div className="bg-gradient-to-b from-red-950 to-transparent h-screen relative">
     
-    <div className="absolute inset-0 bg-cover bg-center z-0">
-      <Image src={backraound} layout="fill" objectFit="cover" alt="Background Image" />
-    </div>
+     <div className="absolute inset-0 bg-cover bg-center z-0">
+  <Image src={backraound} layout="fill" objectFit="cover" alt="Background Image" />
+</div>
 
-  
-    <div className="absolute top-8 left-8 z-10">
-      <Image src={Logo} className="w-40 h-40" alt="Logo" />
-    </div>
+<div className="absolute top-8 left-8 z-10">
+  <Image src={Logo} width={160} height={160} alt="Logo" />
+</div>
+
 
  
     <main className="absolute inset-0 flex items-center justify-center text-white text-center">

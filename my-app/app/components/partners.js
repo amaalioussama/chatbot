@@ -14,7 +14,7 @@ const Partners = () => {
 
 },[]);
   return (
-    <div data-aos="fade-up" className="bg-[#0A0909] mx-52 my-52   h-45">
+    <div data-aos="fade-up" className="bg-gradient-to-t from-black via-black to-black mx-52 my-52   h-45">
     <p   className="text-[#605959] flex items-center justify-center text-sm  font-bold uppercase leading-normal font-sans">Trusted by designers from the top companies</p>
     <div className=" mt-3 flex justify-center items-center" >
     <svg  xmlns="http://www.w3.org/2000/svg" width="259" height="2" viewBox="0 0 259 2" fill="none">
@@ -23,11 +23,11 @@ const Partners = () => {
     </div>
   
     <div className="flex justify-center items-start ">
-    <Image src={Partner1} className=" flex justify-center w-40 h-40 " />
-    <Image src={Partner2} className=" flex justify-center w-40 h-40" />
-    <Image src={Partner3} className=" flex justify-center w-40 h-40" />
-    <Image src={Partner4} className=" flex justify-center w-40 h-40" />
-    <Image src={Partner5} className=" flex justify-center w-40 h-40" />
+    <Image src={Partner1}    className=" flex justify-center w-40 h-40 " />
+    <Image src={Partner2}   className=" flex justify-center w-40 h-40" />
+    <Image src={Partner3}  className=" flex justify-center w-40 h-40" />
+    <Image src={Partner4}  className=" flex justify-center w-40 h-40" />
+    <Image src={Partner5}     className=" flex justify-center w-40 h-40" />
 
     </div>
     
