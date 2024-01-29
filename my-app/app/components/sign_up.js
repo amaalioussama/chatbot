@@ -8,7 +8,7 @@ const Sign_up = () => {
      <div className="bg-gradient-to-b from-red-950 to-transparent h-screen relative">
   
   <div className="absolute inset-0 bg-cover bg-center z-0">
-    <Image src={backraound} layout="fill" objectFit="cover" alt="Background Image" />
+    <Image src={backraound}  objectFit="cover" alt="Background Image" />
   </div>
 
 
@@ -61,16 +61,16 @@ const Sign_up = () => {
 
        
         <div
-          class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+          className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
           <p
-            class="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
+            className="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
             OR
           </p>
         </div>
         
    
-  <button class="px-5 py-2 inline-flex items-center justify-center  border  gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
-      <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo"/>
+  <button className="px-5 py-2 inline-flex items-center justify-center  border  gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+      <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo"/>
       <span>SIGN UP  with Google</span>
   </button>
     </div>
