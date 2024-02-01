@@ -81,11 +81,14 @@ const Page = () => {
     <div className="flex justify-between min-h-screen bg-gradient-to-b from-black to-red-950 relative">
 
       <div className="bg-black p-4">
-        <div className="bg-black p-4 flex items-center">
-          <Image src={Logo} className="h-28 w-28" alt="" />
-          <a href="#" className="text-white text-lg font-semibold ml-3">New chat</a>
-          <Image src={Logochat} className="ml-3 h-5 w-12" alt="" />
-        </div>
+      <div className=" flex ">
+      
+        <Image src={Logo}  className="h-28 w-28 " />
+        <a href="#" className=" text-white  text-lg font-semibold mt-5">New chat</a>
+        <Image src={Logochat} className="  ml-3 mt-6 h-5 w-12 " />
+       
+    </div>
+
         <div className="mt-7 ml-4">
           <h1 className="text-gray-600 font-serif text-sm font-semibold">
             Previous 7 days
@@ -103,6 +106,7 @@ const Page = () => {
 
       <div className="bg-gradient-to-b from-black to-red-950 relative flex-1">
       <div id="chat-container" className="max-w-2xl ml-64 p-4 fixed bottom-0 overflow-y-auto h-96">
+        
           <div className="">
             <div className="mb-4">
               {chatHistory.map((message, index) => (
