@@ -1,31 +1,28 @@
-"use client";
-import Image from "next/image";
-import cycle from "../../public/cycle.png";
-import lwl from "../../public/lwl.png";
-import tani from "../../public/tani.png";
-import talt from "../../public/talt.png";
-import rab3 from "../../public/rab3.png";
+"use client";import Image from "next/image";
+import cycle from "../../../public/cycle.png";
+import lwl from "../../../public/lwl.png";
+import tani from "../../../public/tani.png";
+import talt from "../../../public/talt.png";
+import rab3 from "../../../public/rab3.png";
 import Aos from 'aos';
-import "aos/dist/aos.css"
+import "aos/dist/aos.css";
 import { useEffect } from 'react';
+
 const Partners = () => {
   useEffect(() =>{
-    Aos.init( {duration : "1000"});
+    Aos.init({ duration: "1000" });
+  }, []);
 
-},[]);}
-
-const Datalife = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-red-950 to-black ">
-        
-      <h1 className=" mt-0 text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b from-red-950 to-black">
+      <h1 className="mt-0 text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
         <span className='text-slate-300'>DA</span>
         <span className='text-slate-400'>TA &nbsp;LIFE </span>
         <span className='text-red-600'> &nbsp;CERCEL</span>
       </h1>
 
       <div className="ml-28" data-aos="fade-up">
-        <svg className="mt-12" xmlns="http://www.w3.org/2000/svg" width="808" height="4" viewBox="0 0 808 4" fill="none" >
+        <svg className="mt-12" xmlns="http://www.w3.org/2000/svg" width="808" height="4" viewBox="0 0 808 4" fill="none">
           <linearGradient id="lifelineTopGradient" x1="0" y1="0" x2="808" y2="0" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#E2E8F0" />
             <stop offset="100%" stopColor="transparent" />
@@ -74,4 +71,4 @@ const Datalife = () => {
   );
 };
 
-export default Datalife;
+export default Partners;

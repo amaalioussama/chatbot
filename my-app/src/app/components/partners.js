@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
-import Partner1 from "../../public/google.png"
-import Partner2 from "../../public/scale.png"
-import Partner3 from "../../public/partner2.png"
-import Partner4 from "../../public/microsoft.png"
-import Partner5 from "../../public/openai.png"
+import Partner1 from "../../../public/google.png"
+import Partner2 from "../../../public/scale.png"
+import Partner3 from "../../../public/partner2.png"
+import Partner4 from "../../../public/microsoft.png"
+import Partner5 from "../../../public/openai.png"
 import Aos from 'aos';
 import "aos/dist/aos.css"
 import { useEffect } from 'react';

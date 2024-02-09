@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image';
-import Logo from '../../public/logo2.png';
-import princip from '../../public/princip.png';
+import Logo from '../../../public/logo2.png';
+import princip from '../../../public/princip.png';
 import Aos from 'aos';
 import "aos/dist/aos.css"
 import { useEffect } from 'react';
@@ -14,9 +14,9 @@ const Partners = () => {
 const First = () => {
   return (
     <div>
-     <div className="absolute  z-10">
-            <Image src={Logo} className="h-24 w-36" alt="Logo" />
-          </div> 
+   <div className="absolute top-8 left-8 z-10">
+  <Image src={Logo} width={40} height={40} layout="responsive" alt="Logo" />
+</div>
     <div className="bg-gradient-to-t from-black via-black to-black relative flex h-screen"> 
  
       

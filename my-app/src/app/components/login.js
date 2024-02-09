@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import backraound from '../../public/backforms.png';
-import Logo from '../../public/logo.png';
+import backraound from '../../../public/backforms.png';
+import Logo from '../../../public/logo.png';
 
 const Login = () => {
   return <div>

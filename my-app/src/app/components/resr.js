@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import elemnt from "../../public/headbeforcycle.png";
+import elemnt from "../../../public/headbeforcycle.png";
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
