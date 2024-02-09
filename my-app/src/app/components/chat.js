@@ -6,9 +6,9 @@ const Chat = () => {
   return <div>
    <div className="old chat frame bg-[#000000CF]">
     <div className=" flex ">
-        <Image src={Logo} layout="fill" className="h-28 w-28 "  alt="" />
+        <Image src={Logo}  className="h-28 w-28 "  alt="" />
         <a href="#" className=" text-white  text-lg font-semibold mt-5">New chat</a>
-        <Image src={Logochat} layout="fill" className="  ml-3 mt-6 h-5 w-12 "  alt="" />
+        <Image src={Logochat}  className="  ml-3 mt-6 h-5 w-12 "  alt="" />
     </div>
 
    </div>

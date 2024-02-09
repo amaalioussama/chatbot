@@ -15,7 +15,7 @@ const First = () => {
   return (
     <div>
    <div className="absolute top-8 left-8 z-10">
-  <Image src={Logo} width={40} height={40} layout="responsive" alt="Logo" />
+  <Image src={Logo} width={40} height={40} alt="Logo" />
 </div>
     <div className="bg-gradient-to-t from-black via-black to-black relative flex h-screen"> 
  

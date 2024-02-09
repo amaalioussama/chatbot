@@ -1,6 +1,4 @@
 "use client" ;
-// app/components/sign_up.js
-
 import Image from 'next/image';
 import backraound from '../../../public/backforms.png';
 import Logo from '../../../public/logo.png';
@@ -8,14 +6,14 @@ import Footer from './footer';
 import connectDB from "../../utils/db";
 
 const Sign_up = () => {
-  return (
-    <div className="bg-gradient-to-b from-red-950 to-transparent h-screen relative">
-     <div className="absolute inset-0 bg-cover bg-center z-0">
-  <Image src={backraound} className='w-auto h-auto' layout="fill" objectFit="cover" alt="Background Image" />
+  return (<div>
+       <div className="bg-gradient-to-b from-red-950 to-transparent h-screen relative">
+       <div className="absolute inset-0 bg-cover bg-center z-0">
+  <Image src={backraound} className='w-auto h-auto'  alt="Background Image" />
 </div>
 
 <div className="absolute top-8 left-8 z-10">
-  <Image src={Logo} width={40} height={40} layout="responsive" alt="Logo" />
+  <Image src={Logo} width={40} height={40}  alt="Logo" />
 </div>
 
 
@@ -78,7 +76,7 @@ const Sign_up = () => {
         </div>
       </main>
     </div>
-  );
+  </div>);
 };
 
 export default Sign_up;

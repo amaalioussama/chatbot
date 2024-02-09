@@ -2,8 +2,8 @@
   import React, { useState, useEffect } from "react";
   import OpenAI from "openai";
   import Image from 'next/image';
-  import Logo from '../../public/logo.png';
-  import Logochat from '../../public/chat.png';
+  import Logo from '../../../public/logo.png';
+  import Logochat from '../../../public/chat.png';
 
   const openai = new OpenAI({
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -83,9 +83,12 @@
         <div className="bg-black p-4">
         <div className=" flex ">
         
-          <Image src={Logo}  className="h-28 w-28 " />
+         
+          <div className="absolute top-8 left-8 z-10">
+  <Image src={Logo} width={40} height={40}  alt="Logo" />
+</div>
           <a href="#" className=" text-white  text-lg font-semibold mt-5">New chat</a>
-          <Image src={Logochat} className="  ml-3 mt-6 h-5 w-12 " />
+          <Image src={Logochat} className="  ml-3 mt-6 "  width={40} height={40}  alt="Logochat" />
         
       </div>
 
