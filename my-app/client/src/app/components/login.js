@@ -21,13 +21,17 @@ const Login = () => {
         password
       }
     })
-      .then(result =>{console.log(result)
-        if(result.data==="valider"){
-          router.push("http://localhost:5000");
-        }
-        })
-      .catch(err => console.log(err))
+       if (response.data === "Valid login") {
+      router.push("/chat"); // Redirect to the chat page upon successful login
+    } else {
+      // Handle invalid login response (e.g., show error message)
+      console.log("Invalid login credentials");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    // Handle error (e.g., show error message)
   }
+
   
 
   return <div>

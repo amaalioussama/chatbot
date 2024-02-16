@@ -1,4 +1,4 @@
-exports.emailreg = (username) => {
+exports.emailreg = (username,link) => {
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -71,7 +71,7 @@ exports.emailreg = (username) => {
           <p>At Unicat, we're dedicated to providing you with an exceptional experience. Whether you're here to connect with others, explore new interests, or simply relax, we've got something for you.</p>
           <p>Feel free to explore our platform and discover the many features we offer. If you have any questions or need assistance, our team is here to help.</p>
           <p>Click the button below to get started:</p>
-          // <p><a href=# class="btn">verifier votre compte </a></p>
+          <p><a href="${link}" class="btn" style="color: white;">verifier votre compte</a></p>
           <p>We hope you enjoy your time with us!</p>
           <p>Best regards,<br>The Unicat Team</p>
         </div>
