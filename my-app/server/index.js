@@ -21,6 +21,19 @@ function generateToken(userId) {
   return token;
 }
 
+const authenticateToken = (req, res, next) => {
+  const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Unauthorized" });
+
+  jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
+    if (err) return res.status(403).json({ error: "Forbidden" });
+    req.user = user;
+    next();
+  });
+};
+
+
+
 
 app.post('/register', async (req, res) => {
     const { email, username, password } = req.body;
@@ -89,6 +102,9 @@ app.post('/register', async (req, res) => {
       res.status(500).json({ error: "An error occurred while confirming user" });
     }
   });
+
+
+
   app.post('/login', async (req, res) => {
     const { email, password } = req.body;
   
@@ -126,6 +142,13 @@ app.post('/register', async (req, res) => {
       res.status(500).json({ error: 'An error occurred during login' });
     }
   });
+  // Apply middleware to chat route
+app.get("/chat", authenticateToken, (req, res) => {
+  // Access user information from req.user
+  // Implement chat functionality here
+  res.json({ message: "Chat functionality goes here" });
+});
+
    
 
 app.listen(3001, () => {
