@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Logo from '../../../public/logo.png';
 import Logochat from '../../../public/chat.png';
 import axios from "axios";
+import { parseCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { useRouter } from "next/navigation";
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -13,9 +15,28 @@ const openai = new OpenAI({
 });
 
 const Page = () => {
+  const router = useRouter();
   const [userInput, setUserInput] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get('http://localhost:3001/user', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        setUsername(result.data.username);
+      } catch (error) {
+        
+        router.push('/login');
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleUserInput = async () => {
     setIsLoading(true);
@@ -61,6 +82,7 @@ const Page = () => {
     <div className="flex justify-between min-h-screen bg-gradient-to-b from-black to-red-950 relative">
 
       <div className="bg-black p-4">
+      <h1>Hello {username}, how can I help you today?</h1>
         <div className="flex">
           <div className="absolute top-8 left-8 z-10">
             <Image src={Logo} width={40} height={40}  alt="Logo" />
