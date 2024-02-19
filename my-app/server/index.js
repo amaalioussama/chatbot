@@ -15,26 +15,21 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.connect("mongodb://127.0.0.1:27017/users");
-function generateToken(userId) {
-  // Generate a JWT token with user ID as payload
-  const token = jwt.sign({ userId }, 'secret', { expiresIn: '30d' }); 
-  return token;
-}
-
 const authenticateToken = (req, res, next) => {
   const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
   if (!token) return res.status(401).json({ error: "Unauthorized" });
 
-  jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
+  jwt.verify(token, 'secret', (err, user) => {
     if (err) return res.status(403).json({ error: "Forbidden" });
     req.user = user;
     next();
   });
 };
-
-
-
-
+function generateToken(userId) {
+  // Generate a JWT token with user ID as payload
+  const token = jwt.sign({ userId }, 'secret', { expiresIn: '30d' }); 
+  return token;
+}
 app.post('/register', async (req, res) => {
     const { email, username, password } = req.body;
   
@@ -109,44 +104,52 @@ app.post('/register', async (req, res) => {
     const { email, password } = req.body;
   
     try {
-    
       const user = await UsersModel.findOne({ email });
   
-     
       if (!user) {
         return res.status(400).json({ error: 'User does not exist' });
       }
   
- 
       if (user && !user.verified) {
         return res.status(400).json({ error: 'User not verified' });
       }
   
- 
       if (user.password !== password) {
         return res.status(400).json({ error: 'Incorrect password' });
       }
   
-    
       const token = generateToken(user._id);
   
-    
       res.cookie('jwttoken', token, {
-        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), 
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
         httpOnly: true,
       });
   
-      res.json({ message: 'Valid login', token: token , username: user.username  });
+      res.json({ message: 'Valid login', token: token, username: user.username });
     } catch (err) {
       console.error('Error:', err);
       res.status(500).json({ error: 'An error occurred during login' });
     }
   });
-  // Apply middleware to chat route
-app.get("/chat", authenticateToken, (req, res) => {
-  // Access user information from req.user
-  // Implement chat functionality here
-  res.json({ message: "Chat functionality goes here" });
+  
+  
+
+
+// Route handler to fetch user information
+// Route handler to fetch user information
+app.get('/user', authenticateToken, async (req, res) => {
+  try {
+    // Assuming req.user contains the user information extracted from the token
+    const userId = req.user.userId;
+    const user = await UsersModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.json({ username: user.username });
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).json({ error: 'An error occurred while fetching user information' });
+  }
 });
 
    
