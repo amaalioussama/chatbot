@@ -8,7 +8,7 @@ const { emailreg } = require("./helpers/emailreg");
 const Token = require("./models/Token");
 const crypto =require("crypto");
 const jwt = require('jsonwebtoken');
-
+const { ELEVEN_LABS_API_KEY } = require('../server/');
 
 const app = express();
 app.use(express.json());
@@ -26,14 +26,13 @@ const authenticateToken = (req, res, next) => {
   });
 };
 function generateToken(userId) {
-  // Generate a JWT token with user ID as payload
+
   const token = jwt.sign({ userId }, 'secret', { expiresIn: '30d' }); 
   return token;
 }
 app.post('/register', async (req, res) => {
     const { email, username, password } = req.body;
-  
-    // Check if the email is already registered
+
     try {
       const existingUser = await UsersModel.findOne({ email: email });
       if (existingUser) {
@@ -75,7 +74,7 @@ app.post('/register', async (req, res) => {
   });
   
   function isValidEmail(email) {
-    // Basic email validation using regular expression
+  
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
@@ -132,14 +131,16 @@ app.post('/register', async (req, res) => {
     }
   });
   
-  
+  app.post('/logout', (req, res) => {
+    res.clearCookie('jwttoken');
+    res.json({ message: 'Logged out successfully' });
+  });
 
 
-// Route handler to fetch user information
-// Route handler to fetch user information
+
 app.get('/user', authenticateToken, async (req, res) => {
   try {
-    // Assuming req.user contains the user information extracted from the token
+  
     const userId = req.user.userId;
     const user = await UsersModel.findById(userId);
     if (!user) {
@@ -151,6 +152,9 @@ app.get('/user', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'An error occurred while fetching user information' });
   }
 });
+
+
+//voice recognation
 
    
 

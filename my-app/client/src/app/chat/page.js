@@ -1,13 +1,12 @@
 'use client'
-
 import React, { useState, useEffect } from "react";
 import OpenAI from "openai";
 import Image from 'next/image';
 import Logo from '../../../public/logo.png';
 import Logochat from '../../../public/chat.png';
 import axios from "axios";
-import { parseCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { useRouter } from "next/navigation";
+
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -20,23 +19,41 @@ const Page = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState('');
+  const [isListening, setIsListening] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await axios.get('http://localhost:3001/user', {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
         });
         setUsername(result.data.username);
       } catch (error) {
-        
         router.push('/login');
       }
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (isListening) {
+      const recognition = new window.webkitSpeechRecognition();
+      recognition.lang = 'en-US';
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setUserInput(transcript);
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognition.start();
+    }
+  }, [isListening]);
 
   const handleUserInput = async () => {
     setIsLoading(true);
@@ -47,7 +64,10 @@ const Page = () => {
     ]);
 
     const chatCompletion = await openai.chat.completions.create({
-      messages: [...chatHistory, { role: 'assistant', content: userInput }],
+      messages: [
+        ...chatHistory,
+        { role: 'assistant', content: userInput },
+      ],
       model: 'gpt-3.5-turbo',
     });
 
@@ -60,29 +80,40 @@ const Page = () => {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    const chatContainer = document.getElementById('chat-container');
-    if (chatContainer) {
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-  }, [chatHistory]);
+  const handleVoiceInput = () => {
+    setIsListening(true);
+  };
 
-  const handleSubmit =(e)=>{
+  const handleSubmit = (e) => {
     axios({
-      method:"post",
-      baseURL :"http::/localhost:3001",
-      url:"/savechat",
-      data :{
+      method: 'post',
+      baseURL: 'http://localhost:3001',
+      url: '/savechat',
+      data: {
         userInput,
         chatHistory,
       },
-    } )
-  }
+    });
+  };
+
+  const logout = async () => {
+    try {
+      await axios.post('http://localhost:3001/logout');
+      localStorage.clear();
+      router.push('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   return (
     <div className="flex justify-between min-h-screen bg-gradient-to-b from-black to-red-950 relative">
 
       <div className="bg-black p-4">
-      <h1>Hello {username}, how can I help you today?</h1>
+        <h1>Hello {username}, how can I help you today?</h1>
+        <br/>
+        <button onClick={logout}>Logout</button>
+        <button onClick={handleVoiceInput}></button>
         <div className="flex">
           <div className="absolute top-8 left-8 z-10">
             <Image src={Logo} width={40} height={40}  alt="Logo" />
