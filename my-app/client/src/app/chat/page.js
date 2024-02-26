@@ -85,7 +85,7 @@ const Page = () => {
       <h1>Hello {username}, how can I help you today?</h1>
         <div className="flex">
           <div className="absolute top-8 left-8 z-10">
-            <Image src={Logo} width={40} height={40}  alt="Logo" />
+            <Image src={Logo} width={80} height={80}  alt="Logo" />
           </div>
           <a href="#" className="text-white text-lg font-semibold mt-5">New chat</a>
           <Image src={Logochat} className="ml-3 mt-6"  width={40} height={40}  alt="Logochat" />

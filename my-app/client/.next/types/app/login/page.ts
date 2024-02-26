@@ -1,4 +1,4 @@
-// File: C:\Users\hh\Desktop\chatbot\my-app\client\src\app\login\page.js
+// File: /Users/fatimzhra/chatunicat/chatbot/my-app/client/src/app/login/page.js
 import * as entry from '../../../../src/app/login/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

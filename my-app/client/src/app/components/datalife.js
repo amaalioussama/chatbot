@@ -1,4 +1,8 @@
 "use client";import Image from "next/image";
+import elemnt from "../../../public/openai.png";
+import elemnt2 from "../../../public/scale.png";
+import elemnt3 from "../../../public/x.png";
+import elemnt4 from "../../../public/Microsoft.png";
 import cycle from "../../../public/cycle.png";
 import lwl from "../../../public/lwl.png";
 import tani from "../../../public/tani.png";
@@ -7,6 +11,7 @@ import rab3 from "../../../public/rab3.png";
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
+import OpenAI from "openai";
 
 const Partners = () => {
   useEffect(() =>{
@@ -18,7 +23,7 @@ const Partners = () => {
       <h1 className="mt-0 text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
         <span className='text-slate-300'>DA</span>
         <span className='text-slate-400'>TA &nbsp;LIFE </span>
-        <span className='text-red-600'> &nbsp;CERCEL</span>
+        <span className='text-red-800'> &nbsp;CERCEL</span>
       </h1>
 
       <div className="ml-28" data-aos="fade-up">
@@ -67,6 +72,8 @@ const Partners = () => {
           <path d="M0 2H808.001" stroke="url(#lifelineGradient)" strokeWidth="3" />
         </svg>
       </div>
+      
+     
     </div>
   );
 };

@@ -1,19 +1,25 @@
 import Frist from "./components/frist";
 import Partners from "./components/partners";
-import Footer from "./components/footer";
 import Resources from "./components/resr";
 import Datalife from "./components/datalife";
-
+import Tools from "./components/tools";
+import Slide from "./components/slide";
+import Footer from "./components/footer";
 const Page = () => {
   return (
     <div>
-      <Frist />
+       <Frist/>
       <Partners />
       <Resources />
       <Datalife />
+      <Tools />
+      <Slide/>
       <Footer />
+     
+    
     </div>
   );
 };
 
 export default Page;
+

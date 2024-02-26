@@ -28,7 +28,7 @@ const Login = () => {
       localStorage.setItem("username", username);
 
       // Redirect to chat page
-      router.push("http://localhost:5000/chat");
+      router.push("http://localhost:3000/chat");
     } catch (err) {
       console.error(err);
       setError("Invalid email or password");
