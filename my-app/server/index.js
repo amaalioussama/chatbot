@@ -8,11 +8,33 @@ const { emailreg } = require("./helpers/emailreg");
 const Token = require("./models/Token");
 const crypto =require("crypto");
 const jwt = require('jsonwebtoken');
-const { ELEVEN_LABS_API_KEY } = require('../server/');
+const { OpenAI ,Configuration} = require("openai");
+
+const openai = new OpenAI({
+  apiKey: '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' 
+});
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.post("/generate", async (req, res) => {
+  const promptString = req.body.prompt;
+  if (!promptString) {
+    return res.status(400).json({ error: "You need a prompt" });
+  }
+  try {
+    const aiResponse = await openai.image.create({
+      prompt: `${promptString}`,
+      n: 1,
+      size: "512x512",
+    });
+    const imageUrl = aiResponse.data.data[0].url;
+    res.status(200).json({ url: imageUrl });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "An internal server error occurred" });
+  }
+});
 
 mongoose.connect("mongodb://127.0.0.1:27017/users");
 const authenticateToken = (req, res, next) => {
@@ -154,7 +176,6 @@ app.get('/user', authenticateToken, async (req, res) => {
 });
 
 
-//voice recognation
 
    
 

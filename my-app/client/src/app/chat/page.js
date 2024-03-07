@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState, useEffect } from "react";
 import OpenAI from "openai";
 import Image from 'next/image';
@@ -6,7 +7,6 @@ import Logo from '../../../public/logo.png';
 import Logochat from '../../../public/chat.png';
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -36,6 +36,21 @@ const Page = () => {
     };
     fetchData();
   }, []);
+
+  const saveChatHistory = async (userInput, chatHistory) => {
+    try {
+      await axios.post(
+        'http://localhost:3001/savechat',
+        {
+          userInput,
+          chatHistory
+        }
+      );
+      console.log('Chat history saved successfully');
+    } catch (error) {
+      console.error('Error saving chat history:', error);
+    }
+  };
 
   useEffect(() => {
     if (isListening) {
@@ -78,6 +93,9 @@ const Page = () => {
 
     setUserInput('');
     setIsLoading(false);
+
+    // Save chat history to the database
+    saveChatHistory(userInput, chatHistory);
   };
 
   const handleVoiceInput = () => {
@@ -110,16 +128,15 @@ const Page = () => {
     <div className="flex justify-between min-h-screen bg-gradient-to-b from-black to-red-950 relative">
 
       <div className="bg-black p-4">
-        <h1>Hello {username}, how can I help you today?</h1>
-        <br/>
-        <button onClick={logout}>Logout</button>
-        <button onClick={handleVoiceInput}></button>
-        <div className="flex">
-          <div className="absolute top-8 left-8 z-10">
-            <Image src={Logo} width={40} height={40}  alt="Logo" />
+        <h1 className="text-white text-center mb-8">Hello {username}, how can I assist you today?</h1>
+        <div className="flex justify-between">
+          <button onClick={logout} className="text-white bg-red-500 px-4 py-2 rounded-md">Logout</button>
+          <button onClick={handleVoiceInput} className="text-white bg-transparent border border-white px-4 py-2 rounded-md">Voice Input</button>
+          <div className="flex items-center">
+            <Image src={Logo} width={80} height={80} alt="Logo" />
+            <a href="#" className="text-white text-lg font-semibold ml-3 mt-5">New chat</a>
+            <Image src={Logochat} className="ml-3 mt-6" width={40} height={40} alt="Logochat" />
           </div>
-          <a href="#" className="text-white text-lg font-semibold mt-5">New chat</a>
-          <Image src={Logochat} className="ml-3 mt-6"  width={40} height={40}  alt="Logochat" />
         </div>
 
         <div className="mt-7 ml-4">
@@ -148,13 +165,13 @@ const Page = () => {
           </div>
         </div>
         <div className="p-4 bg-black">
-          <div className="flex items-center ">
+          <div className="flex items-center justify-center">
             <input
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               placeholder="Type your message..."
-              className="border-b border-white p-2 focus:outline-none bg-transparent text-white font-poppins text-base flex-1 mr-4 "
+              className="border-b border-white p-2 focus:outline-none bg-transparent text-white font-poppins text-base flex-1 mr-4"
             />
             <button
               onClick={handleUserInput}
