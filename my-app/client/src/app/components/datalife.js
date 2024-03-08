@@ -1,5 +1,5 @@
-"use client";import Image from "next/image";
-
+"use client";
+import Image from "next/image";
 import lwl from "../../../public/lwl.png";
 import tani from "../../../public/tani.png";
 import talt from "../../../public/talt.png";

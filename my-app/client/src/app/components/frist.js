@@ -13,8 +13,8 @@ import {fadeIn} from '../components/variants'
 
 const First = () => {
   return (
-    <div>
-  <div className="absolute top-8 left-8 z-10">
+  <>
+   <div className="absolute top-8 left-8 z-10">
     <Image src={Logo} width={120} height={120} alt="Logo" />
   </div>
   <div className="bg-gradient-to-t from-black via-black to-black relative flex h-screen">
@@ -70,7 +70,9 @@ const First = () => {
       />
     </motion.div>
   </div>
-</div>
+
+  </>
+ 
 
   );
 

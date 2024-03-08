@@ -11,7 +11,7 @@ const Resources = () => {
   }, []);
 
   return (
-    <div  >
+    <div>
       <div className="  flex items-center justify-center h-screen mt-28 bg-gradient-to-b from-black to-red-950 relative"  >
         <div className="ml-9 flex" data-aos="fade-up">
           <Image src={elemnt} alt="element" className="h-auto w-auto" />
