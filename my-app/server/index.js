@@ -9,6 +9,7 @@ const Token = require("./models/Token");
 const crypto =require("crypto");
 const jwt = require('jsonwebtoken');
 const { OpenAI ,Configuration} = require("openai");
+const  Chatuser = require('./models/Chatuser');
 
 const openai = new OpenAI({
   apiKey: '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' 
@@ -174,8 +175,23 @@ app.get('/user', authenticateToken, async (req, res) => {
     res.status(500).json({ error: 'An error occurred while fetching user information' });
   }
 });
+app.post('/savechat', async (req, res) => {
+  try {
+    const { userId, userInput, chatHistory } = req.body;
 
+    const user = await UsersModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
 
+    const newChatMessage = new Chatuser({ user: userId, userInput, chatHistory });
+    await newChatMessage.save();
+    res.status(200).json({ message: 'Chat history saved successfully' });
+  } catch (error) {
+    console.error('Error saving chat history:', error);
+    res.status(500).json({ error: 'An internal server error occurred' });
+  }
+});
 
    
 
