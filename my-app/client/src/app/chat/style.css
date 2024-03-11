@@ -1,0 +1,17 @@
+#chat-container {
+    max-width: 100%;
+    padding: 4px;
+    position: fixed;
+ 
+    overflow-y: auto;
+    height: 5/6;
+  }
+  
+  #chat-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit (Chrome, Safari, etc.) */
+  }
+  
+  #chat-container {
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
