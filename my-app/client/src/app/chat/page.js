@@ -183,7 +183,6 @@ const Page = () => {
         <KeyboardVoiceIcon /> 
       </button>
 
-      {/* Button with IosShareTwoToneIcon */}
       <button
         onClick={handleUserInput}
         disabled={isLoading}
