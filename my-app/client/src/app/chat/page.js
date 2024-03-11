@@ -28,7 +28,9 @@ const Page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      
       try {
+        console.log(localStorage.getItem('token'))
         const result = await axios.get('http://localhost:3001/user', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
