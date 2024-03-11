@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice'; 
 import IosShareTwoToneIcon from '@mui/icons-material/IosShareTwoTone';
 import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTone';
+import './style.css';
+
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
@@ -22,6 +24,7 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState('');
   const [isListening, setIsListening] = useState(false);
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +34,7 @@ const Page = () => {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
+        setUserId(result.data.userId);
         setUsername(result.data.username);
       } catch (error) {
         router.push('/login');
@@ -39,20 +43,7 @@ const Page = () => {
     fetchData();
   }, []);
 
-  const saveChatHistory = async (userInput, chatHistory) => {
-    try {
-      await axios.post(
-        'http://localhost:3001/savechat',
-        {
-          userInput,
-          chatHistory
-        }
-      );
-      console.log('Chat history saved successfully');
-    } catch (error) {
-      console.error('Error saving chat history:', error);
-    }
-  };
+
 
   useEffect(() => {
     if (isListening) {
@@ -79,42 +70,47 @@ const Page = () => {
       ...prevChat,
       { role: 'user', content: userInput },
     ]);
+    const timeNow = new Date().toISOString();
+  try {
+    await axios.post(
+      'http://localhost:3001/savechat',
+      {
+        userInput,
+        assistantResponse: chatHistory.map((message) => message.content),
+        time: timeNow,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    );
+    console.log('Chat data sent to backend successfully');
+  } catch (error) {
+    console.error('Error sending chat data to backend:', error);
+  }
 
-    const chatCompletion = await openai.chat.completions.create({
-      messages: [
-        ...chatHistory,
-        { role: 'assistant', content: userInput },
-      ],
-      model: 'gpt-3.5-turbo',
-    });
+  const chatCompletion = await openai.chat.completions.create({
+    messages: [
+      ...chatHistory,
+      { role: 'assistant', content: userInput },
+    ],
+    model: 'gpt-3.5-turbo',
+  });
 
-    setChatHistory((prevChat) => [
-      ...prevChat,
-      { role: 'assistant', content: chatCompletion.choices[0].message.content },
-    ]);
+  setChatHistory((prevChat) => [
+    ...prevChat,
+    { role: 'assistant', content: chatCompletion.choices[0].message.content },
+  ]);
 
-    setUserInput('');
-    setIsLoading(false);
-
-    // Save chat history to the database
-    saveChatHistory(userInput, chatHistory);
-  };
+  setUserInput('');
+  setIsLoading(false);
+};
 
   const handleVoiceInput = () => {
     setIsListening(true);
   };
 
-  const handleSubmit = (e) => {
-    axios({
-      method: 'post',
-      baseURL: 'http://localhost:3001',
-      url: '/savechat',
-      data: {
-        userInput,
-        chatHistory,
-      },
-    });
-  };
 
   const logout = async () => {
     try {
@@ -153,8 +149,8 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-b from-black to-red-950 relative flex-1">
-        <div id="chat-container" className="max-w-full p-4 fixed bottom-0 overflow-y-auto h-96">
+      <div className="bg-gradient-to-b from-red-950 to-black h-full relative flex-1">
+        <div id="chat-container" className="max-w-full p-4 fixed bottom-16 overflow-y-auto h-5/6 ">
           <div className="">
             <div className="mb-4">
               {chatHistory.map((message, index) => (
@@ -168,7 +164,7 @@ const Page = () => {
           </div>
         </div>
         <div className="p-4 bg-black">
-          <div className="flex items-center justify-center">
+          <div className="  fixed w-4/5 bottom-5 flex items-center justify-center">
             <input
               type="text"
               value={userInput}
