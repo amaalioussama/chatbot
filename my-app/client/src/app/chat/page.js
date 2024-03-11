@@ -7,7 +7,9 @@ import Logo from '../../../public/logo.png';
 import Logochat from '../../../public/chat.png';
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
+import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice'; 
+import IosShareTwoToneIcon from '@mui/icons-material/IosShareTwoTone';
+import HourglassBottomTwoToneIcon from '@mui/icons-material/HourglassBottomTwoTone';
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
@@ -128,10 +130,9 @@ const Page = () => {
     <div className="flex justify-between min-h-screen bg-gradient-to-b from-black to-red-950 relative">
 
       <div className="bg-black p-4">
-        <h1 className="text-white text-center mb-8">Hello {username}, how can I assist you today?</h1>
         <div className="flex justify-between">
-          <button onClick={logout} className="text-white bg-red-500 px-4 py-2 rounded-md">Logout</button>
-          <button onClick={handleVoiceInput} className="text-white bg-transparent border border-white px-4 py-2 rounded-md">Voice Input</button>
+
+         
           <div className="flex items-center">
             <Image src={Logo} width={80} height={80} alt="Logo" />
             <a href="#" className="text-white text-lg font-semibold ml-3 mt-5">New chat</a>
@@ -146,7 +147,9 @@ const Page = () => {
           <h1 className="text-gray-600 font-serif text-sm font-semibold">Previous 30 days</h1>
         </div>
         <div className="ml-4 fixed bottom-0 text-gray-600 font-serif text-sm font-semibold">
-          User:
+          User:&nbsp; {username}
+          &nbsp; &nbsp; &nbsp;
+          <button onClick={logout} className="ml-4 fixed bottom-0 text-gray-500 font-serif text-sm font-semibold">Logout</button>
         </div>
       </div>
 
@@ -174,14 +177,23 @@ const Page = () => {
               className="border-b border-white p-2 focus:outline-none bg-transparent text-white font-poppins text-base flex-1 mr-4"
             />
             <button
-              onClick={handleUserInput}
-              disabled={isLoading}
-              className="bg-transparent relative inline-flex items-center justify-center p-0.5 overflow-hidden text-base font-medium text-white rounded-lg group"
-            >
-              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-transparent rounded-md group-hover:bg-gradient-to-br group-hover:from-red-950 group-hover:via-black">
-                {isLoading ? 'Loading...' : 'Send'}
-              </span>
-            </button>
+        onClick={handleVoiceInput}
+        className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-transparent rounded-md group-hover:bg-gradient-to-br group-hover:from-red-950 group-hover:via-black"
+      >
+        <KeyboardVoiceIcon /> 
+      </button>
+
+      <button
+        onClick={handleUserInput}
+        disabled={isLoading}
+        className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-transparent rounded-md group-hover:bg-gradient-to-br group-hover:from-red-950 group-hover:via-black"
+      >
+      
+        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-transparent rounded-md group-hover:bg-gradient-to-br group-hover:from-red-950 group-hover:via-black">
+        {isLoading ? <><HourglassBottomTwoToneIcon /> Loading...</> : <IosShareTwoToneIcon />}
+        </span>
+      </button> 
+               &nbsp; &nbsp; &nbsp;
           </div>
         </div>
       </div>

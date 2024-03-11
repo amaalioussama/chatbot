@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.12",
+    "@mui/material": "^5.15.12",
     "annyang": "^2.6.1",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
@@ -27,8 +31,8 @@
     "react-hot-toast": "^2.4.1",
     "react-speech": "^1.0.2",
     "react-speech-recognition": "^3.10.0",
-    "regenerator-runtime": "^0.14.1",
     "react-type-animation": "^3.2.0",
+    "regenerator-runtime": "^0.14.1",
     "sharp": "^0.33.2"
   },
   "devDependencies": {
