@@ -11,10 +11,10 @@ const Resources = () => {
   }, []);
 
   return (
-    <div>
-      <div className="  flex items-center justify-center h-screen mt-28 bg-gradient-to-b from-black to-red-950 relative"  >
+     <>
+      <div className="flex items-center justify-center h-screen mt-28 bg-gradient-to-b from-black to-red-950 relative"  >
         <div className="ml-9 flex" data-aos="fade-up">
-          <Image src={elemnt} alt="element" className="h-auto w-auto" />
+          <Image src={elemnt} alt="element" className="h-96 w-80 mt-10" />
           <div className="mt-5">
             <div className="flex items-center ml-40">
               <h1 className="text-4xl text-white mt-16 font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
@@ -39,7 +39,7 @@ const Resources = () => {
           </div>
         </div>
       </div>
-    </div>
+      </>
   );
 };
 

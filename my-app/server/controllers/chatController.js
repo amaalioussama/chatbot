@@ -21,7 +21,20 @@ const saveChat = async (req, res) => {
         res.status(500).json({ error: 'An error occurred while saving chat data' });
     }
 };
+const getChatHistoryByDate = async (req, res) => {
+    const { date } = req.params;
+
+    try {
+        const chatHistory = await ChatModel.find({ time: { $gte: new Date(date) } });
+        res.json({ chatHistory });
+    } catch (error) {
+        console.error('Error fetching chat history:', error);
+        res.status(500).json({ error: 'An error occurred while fetching chat history' });
+    }
+};
+
 
 module.exports = {
-    saveChat
+    saveChat,
+    getChatHistoryByDate
 };

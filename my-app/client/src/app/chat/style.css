@@ -8,10 +8,21 @@
   }
   
   #chat-container::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for WebKit (Chrome, Safari, etc.) */
+    display: none;
   }
   
   #chat-container {
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    scrollbar-width: none; 
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
   
+  .bg-gray-900 {
+    background-color: #333333;
+  }
+  
+  .text-white {
+    color: white;
+  }

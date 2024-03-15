@@ -1,8 +1,9 @@
-"use client";import Image from "next/image";
+"use client";
+import Image from "next/image";
 import elemnt from "../../../public/openai.png";
 import elemnt2 from "../../../public/scale.png";
 import elemnt3 from "../../../public/x.png";
-import elemnt4 from "../../../public/microsoft.png";
+import elemnt4 from "../../../public/Microsoft.png";
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import { useEffect } from 'react';
@@ -12,9 +13,9 @@ const  Tools = () => {
     }, []);
   
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-b  from-black to-red-950 ">
-         <div className="mt-80" >
-        <h1 className="mt-80 text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
+        <div className="flex flex-col items-center justify-center  bg-gradient-to-b  from-black to-red-950 ">
+         <div className="" >
+        <h1 className=" text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
         
         <span className='text-slate-300'>AI-</span>
         <span className='text-slate-300'>POWERED &nbsp;</span>
@@ -25,18 +26,18 @@ const  Tools = () => {
       <div className="ml-9 flex" data-aos="fade-up">
       <Image src={elemnt} alt="OpenAI Logo" className="h-auto w-auto" />
      
-      <div className="ml-36 mb-9">
+      <div className="ml-36 mb-9 mt-24">
         
       <h1 className="text-3xl text-white font-bold font-serif uppercase bg-clip-text " data-aos="fade-up">
     <span className='text-3xl font-normal font-advent-pro uppercase bg-gradient-to-t from-gray-300 to-transparent bg-clip-text text-transparent flex items-center ml-28'>OPENAI</span>
   </h1>
               <p className='text-wrap text-base font-bold  mt-4  leading-8 uppercase text-slate-300 whitespace-pre-line' data-aos="fade-up">
-              OpenAI, founded to advance digital <br className="sm:hidden md:inline" />
-              intelligence for humanity's benefit,  <br className="sm:hidden md:inline" />
-              consists of a for-profit entity, OpenAI LP, <br className="md:hidden lg:inline" />
-              and its non-profit parent, OpenAI Inc. It <br className="lg:hidden xl:inline" />
-              conducts research to ensure AGI benefits  <br className="lg:hidden xl:inline" />
-              society, avoiding harmful applications or <br className="md:hidden lg:inline" />
+              OpenAI, &nbsp;founded&nbsp; to&nbsp; advance&nbsp; digital <br className="sm:hidden md:inline" />
+             intelligence &nbsp; for &nbsp; humanity's &nbsp;&nbsp;benefit ,  <br className="sm:hidden md:inline" />
+               consists of a for-profit entity, OpenAI LP, <br className="md:hidden lg:inline" />
+                and its non-profit&nbsp; parent, OpenAI Inc.  It <br className="lg:hidden xl:inline" />
+             conducts research to ensure AGI benefits <br className="lg:hidden xl:inline" />
+             society, avoiding harmful applications or <br className="md:hidden lg:inline" />
               
               
                 <span className="tracking-wider"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -49,13 +50,13 @@ const  Tools = () => {
             </div>
             <div className="mt-16" >
             <div className="ml-9 flex" data-aos="fade-up">
-            <Image src={elemnt3} alt="OpenAI Logo" className="h-auto w-auto" />
+            <Image src={elemnt3} alt="OpenAI Logo" className="h-80 w-56 ml-32" />
        
-            <div className="ml-36 mb-9">
+            <div className="ml-28 mb-9 ">
             <h1 className=" text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
-        <span className='text-3xl font-normal font-advent-pro uppercase bg-gradient-to-t from-gray-300 to-transparent bg-clip-text text-transparent flex items-center ml-40' >X</span>
+        <span className='ml-96 text-5xl font-normal font-advent-pro uppercase bg-gradient-to-t from-gray-300 to-transparent bg-clip-text text-transparent flex items-center ' >X</span>
       </h1>
-              <p className='text-wrap text-base font-bold  mt-4  leading-8 uppercase text-slate-300 whitespace-pre-line' data-aos="fade-up">
+              <p className='text-wrap text-base font-bold  mt-4  leading-8 uppercase text-slate-300 whitespace-pre-line ml-52' data-aos="fade-up">
               it is a popular social media platform that <br className="sm:hidden md:inline" />
               allows users to share short messages  <br className="sm:hidden md:inline" />
               called tweets. Twitter is widely used for  <br className="md:hidden lg:inline" />
@@ -74,10 +75,10 @@ const  Tools = () => {
               </div>
               <div className="mt-16" >
               <div className="ml-9 flex" data-aos="fade-up">
-              <Image src={elemnt4} alt="OpenAI Logo" className="h-auto w-auto" />
+              <Image src={elemnt4} alt="OpenAI Logo" className="h-80 w-56 ml-32 mt-7" />
             
            
-            <div className="ml-36 mb-9">
+            <div className="ml-72 mt-9 mb-9">
             <h1 className=" text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
         <span className='text-3xl font-normal font-advent-pro uppercase bg-gradient-to-t from-gray-300 to-transparent bg-clip-text text-transparent flex items-center ml-20'>Microsoft</span>
       </h1>
@@ -93,11 +94,11 @@ const  Tools = () => {
             </div>
             </div>
             <div className="mt-16" >
-            <div className="ml-9 flex" data-aos="fade-up">
-              <Image src={elemnt2} alt="OpenAI Logo" className="h-auto w-auto" />
+            <div className="ml-48 flex" data-aos="fade-up">
+              <Image src={elemnt2} alt="OpenAI Logo" className="h-96 w-52 " />
             
            
-            <div className="ml-36 mb-9">
+            <div className="ml-64  mb-9">
             <h1 className=" text-3xl text-white font-bold font-serif uppercase bg-clip-text" data-aos="fade-up">
         <span className='text-3xl font-normal font-advent-pro uppercase bg-gradient-to-t from-gray-300 to-transparent bg-clip-text text-transparent flex items-center ml-28'>scale</span>
       </h1>

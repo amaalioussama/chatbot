@@ -5,32 +5,23 @@ import Datalife from "./components/datalife";
 import Tools from "./components/tools";
 import Slide from "./components/slide";
 import Footer from "./components/footer";
+import Aboutus from "./components/aboutus";
 const Page = () => {
   return (
     <div>
-      <div>
-       <Frist/>
-       </div>
-       <div>
+    <Frist/>
+
       <Partners />
-      </div>
-       <div>
+ 
       <Resources />
-      </div>
-       <div>
-      <Datalife />
-      </div>
-       <div>
-      <Tools />
-      </div>
-       <div>
+   
+  <Datalife />
+ 
+       <Tools />
+
+<Aboutus/>
       <Slide/>
-      </div>
-       <div>
       <Footer />
-      </div>
-     
-    
     </div>
   );
 };
