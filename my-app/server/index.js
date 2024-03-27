@@ -15,16 +15,12 @@ app.use(cors());
 // Connect to MongoDB
 mongoose.connect("mongodb://127.0.0.1:27017/users");
 
-// Define other middleware and configurations
-
-// Use authentication routes
 app.use(authRoutes);
 
-// Use chat routes
 app.use(chatRoutes);
 app.use(userRoutes);
 
-// Start the server
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Connected at http://localhost:${PORT}`);

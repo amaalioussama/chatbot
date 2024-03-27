@@ -4,7 +4,7 @@ import Logo from '../../../public/logo.png';
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-gradient-to-t from-black via-black to-black">
+      <footer className="bg-gradient-to-t from-black  via-black to-black">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="">

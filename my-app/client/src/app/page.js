@@ -19,8 +19,8 @@ const Page = () => {
  
        <Tools />
 
-<Aboutus/>
       <Slide/>
+    
       <Footer />
     </div>
   );
